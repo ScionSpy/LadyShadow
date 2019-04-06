@@ -18,8 +18,6 @@ module.exports = {
 
         if(!admin && !staff && !message.member.permissions.has("BAN_MEMBERS") && message.author.id != message.guild.ownerid) return message.reply("You require either the servers `ADMIN` role, or `BAN_MEMBERS` permission to Ban members.");
 
-        if(!message.guild.members.get(message.client.id).permissions.has("KICK_MEMBERS")) return message.reply("I require the `KICK_MEMBERS` permission to Ban somebody!!\nYou can by selecting the user in question and tap `Ban Member`");
-
         if(!message.guild.members.get(message.client.user.id).permissions.has("BAN_MEMBERS")) return message.reply("I require the `BAN_MEMBERS` permission to Ban somebody!!\nYou can by selecting the user in question and tap `Ban Member`");
 
         if(args.length == 0 || !message.mentions.members) return message.reply(`Please mention a user to ban.\n\`${settings.prefix}ban <@user> <reason>\``);
