@@ -1,0 +1,28 @@
+{
+  "name" : "Xarithian Xenobiologists",
+  "name2" : "xarthianXenobiologists",
+  
+  "updated" : "2019, March 13'th",
+
+  "images" : {
+    "icon" : "",
+    "mini" : ""
+  },
+  
+  
+  "membersCount" : 1,
+  "members" : {
+    "leader" : "Ghost",
+    "members" : ["None"]
+  },
+  
+  
+  "diploymacy" : {
+    
+    "allies" : ["None"],
+    
+    "ceasefires" : ["None"],
+    
+    "wars" : ["None"]
+  }
+}

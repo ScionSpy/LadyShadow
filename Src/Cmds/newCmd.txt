@@ -1,0 +1,18 @@
+module.exports = {
+  coded : "2019-[]-[]",
+  
+  name : "",
+  aliases : "",
+  description : "",
+  usage : "<>",
+  
+  guildOnly : true,
+  args : true,
+  cooldown : #,
+  easteregg : true,
+  
+  
+  execute(message, args){
+    
+  },
+};

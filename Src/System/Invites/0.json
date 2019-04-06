@@ -1,0 +1,15 @@
+{
+  "id" : "0",
+  "date" : "<year>, <MM DD>",
+  "userID" : "<ownerID>",
+  
+  "partners" : "<true|false>",
+  
+  
+  "invite" : "",
+  "color" : "<hexColor>",
+  
+  "tag" : "",
+  
+  "description" : ""
+}

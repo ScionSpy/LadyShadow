@@ -1,0 +1,22 @@
+{
+  "id" : "324646814206918658",
+
+  "prefix" : "..",
+  "dmhelp" : "false",
+
+  "admin" : "",
+  "moderator" : "",
+  "staff" : "",
+  "mute" : "",
+
+  "welcome" : "",
+  "farewell" : "",
+  "modlog" : "",
+  "rift" : "",
+
+  "wMsg" : "",
+  "fMsg" : "",
+
+  "whitelist" : "[]",
+  "censor" : "[]"
+}

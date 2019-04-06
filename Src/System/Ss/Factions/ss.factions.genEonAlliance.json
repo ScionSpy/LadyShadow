@@ -1,0 +1,28 @@
+{
+  "name" : "Gen Eon Alliance",
+  "name2" : "genEonAlliance",
+  
+  "updated" : "2019, March 17'th",
+  
+  "images" : {
+    "icon" : "https://cdn.discordapp.com/attachments/392548832069681153/557670225953292307/guilds_gea_icon.png",
+    "mini" : ""
+  },
+
+
+  "membersCount" : 2,
+  "members" : {
+    "leader" : "D Rabbitoh",
+    "members" : ["Pabo"]
+  },
+  
+  
+  "diploymacy" : {
+    
+    "allies" : ["guildOfTheGalaxy"],
+    
+    "ceasefires" : ["None"],
+    
+    "wars" : ["None"]
+  }
+}

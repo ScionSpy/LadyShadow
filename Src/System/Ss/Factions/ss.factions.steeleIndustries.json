@@ -1,0 +1,28 @@
+{
+  "name" : "Steele Industries",
+  "name2" : "steeleIndustries",
+  
+  "updated" : "2019, March 12'th",
+
+  "image" : {
+    "icons" : "https://cdn.discordapp.com/attachments/392548832069681153/557696878355939339/icon_si.png",
+    "mini" : ""
+  },
+  
+  
+  "membersCount" : 1,
+  "members" : {
+    "leader" : "Zed Steele",
+    "members" : ["None"]
+  },
+  
+  
+  "diploymacy" : {
+    
+    "allies" : ["None"],
+    
+    "ceasefires" : ["None"],
+    
+    "wars" : ["None"]
+  }
+}

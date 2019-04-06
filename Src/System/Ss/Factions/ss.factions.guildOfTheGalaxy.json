@@ -1,0 +1,28 @@
+{
+  "name" : "Guild of the Galaxy",
+  "name2" : "guildOfTheGalaxy",
+  
+  "updated" : "2019, March 19'th",
+
+  "images" : {
+    "icon" : "https://cdn.discordapp.com/attachments/392548832069681153/557670183448215581/guilds_gg_icon.jpg",
+    "mini" : "https://cdn.discordapp.com/attachments/392548832069681153/557670197629026315/guilds_gg_mini.gif"
+  },
+  
+  
+  "membersCount" : 5,
+  "members" : {
+    "leader" : "Scion_Spy",
+    "members" : ["Asgarnian", "blunty", "Haugh_Janus", "wrongspeed"]
+  },
+  
+  
+  "diploymacy" : {
+    
+    "allies" : ["genEonAlliance"],
+    
+    "ceasefires" : ["None"],
+    
+    "wars" : ["None"]
+  }
+}
