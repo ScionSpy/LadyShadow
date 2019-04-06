@@ -21,3 +21,5 @@ module.exports = {
         return embed;
     }
 };
+
+//Make an array collection of err msgs in Images for this.Thumbnail.;
