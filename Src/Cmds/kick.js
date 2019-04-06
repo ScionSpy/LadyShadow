@@ -17,12 +17,12 @@ module.exports = {
         if(settings.moderator) moderator = true;
         if(settings.staff) staff = true;
 
-        if(!admin && !moderator && !staff && !message.member.permissions.has("KICK_MEMBERS") && message.author.id != message.guild.ownerid) return message.reply("You require either the servers `STAFF` role, or `KICK_MEMBERS` permission to Kick members.");
+        if(!admin && !moderator && !staff && !message.member.permissions.has("KICK_MEMBERS") && message.author.id != message.guild.ownerid) return message.reply("You require either the servers `MODERATOR` role, or `KICK_MEMBERS` permission to Kick members.");
 
         if(!message.guild.members.get(message.client.id).permissions.has("KICK_MEMBERS")) return message.reply("I require the `KICK_MEMBERS` permission to Kick somebody!!\nYou can by selecting the user in question and tap `Kick Member`");
 
         if(args.length == 0 || !message.mentions.members) return message.reply(`Please mention a user to kick.\n\`${settings.prefix}kick <@user> <reason>\``);
-        if(args.length <= 1) return message.reply(`Please provide a reason for banning ${message.mentions.members.first().user.tag}`);
+        if(args.length <= 1) return message.reply(`Please provide a reason for kicking ${message.mentions.members.first().user.tag}`);
         
         member = message.mentions.members.first();
         removeMember = args.shift();
