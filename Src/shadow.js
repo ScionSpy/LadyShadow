@@ -298,7 +298,8 @@ bot.on('message', (message) => {
     try { 
     	cmd.execute(message, args);
     } catch (error) {
-      console.error(error);
+      //console.log(error);
+      message.channel.send(bot.functions.get("err").execute(message, error));
       message.reply(`there was an error trying to execute \`${cmdName}\`!!`);
     };
 });

@@ -33,6 +33,7 @@ module.exports = {
 
         message.guild.members.get(member.id).kick(`Kicked by "${message.author.tag} for ${args}`)
             .then(msg => {
+                ch = message.channel;
                 if(settings.modlog) ch = message.guild.channels.get(settings.modlog);
 
               //get modLog
@@ -41,7 +42,7 @@ module.exports = {
                 ch.send(embed);
             })
             .catch(err => {
-                console.log(`----------\n\n${err}`);
+                message.channel.send(bot.functions.get("err").execute(message, err));
             });
     }
 };
