@@ -18,7 +18,7 @@ module.exports = {
     */
     
     
-    let msg = `\`\`\`js\n \ Name : ${b.user.tag}\n \ \ \ ID : ${b.user.id}\nGuilds : ${b.guilds.size}\n Users : ${b.users.size}\n\`\`\``;
+    let msg = bot.startup;
     
     
     const e = new d.RichEmbed()

@@ -14,7 +14,7 @@ module.exports = {
 
     var member = message.mentions.members.first();
     
-    if(!member) var member = message.member
+    if(!member) var member = message.member;
     try{
       settings = require(`.././System/Settings/Users/${member.id}.json`);
     } catch (err) {
