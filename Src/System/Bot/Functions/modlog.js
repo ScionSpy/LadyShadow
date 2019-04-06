@@ -27,7 +27,7 @@ module.exports = {
       //Create the #ModLog embed.
         const embed = new discord.RichEmbed()
         .setAuthor(`${target.tag} (${target.id})\nCase [**]`, target.avatarURL)
-        .setFooter(`${mod.tag} (${message.author.id})`, mod.avatarURL)
+        .setFooter(`${mod.tag} (${mod.id})`, mod.avatarURL)
         .setColor(color)
         .addField("Type", type, true)
         .addField("Reason", reason, true)
