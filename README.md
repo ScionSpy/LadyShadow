@@ -7,5 +7,4 @@ Coded by Discord Users: §π∆d°≈~§¶¥#0225 ({HSF}ScionSpy) && Bejebajay#4
 
 • Invite: https://discordapp.com/oauth2/authorize?client_id=347872963636494337&scope=bot&permissions=470150359
 
-• Required Files: discord.js
-• • Install with: `npm -i discord.js --save`
+• Required Files: discord.js || Install with: `npm -i discord.js --save`
