@@ -12,7 +12,7 @@ module.exports = {
         admin = false;
         staff = false
 
-        settings = require(bot.g.get(message.guild.id));
+        settings = bot.g.get(message.guild.id);
         if(settings.admin) admin = true;
         if(settings.staff) staff = true;
 

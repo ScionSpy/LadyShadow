@@ -9,12 +9,12 @@ module.exports = {
 
     execute(message, args){
         bot = message.client;
-        
+
         admin = false;
         moderator = false;
         staff = false;
 
-        settings = require(bot.g.get(message.guild.id));
+        settings = bot.g.get(message.guild.id);
         if(settings.admin) admin = true;
         if(settings.moderator) moderator = true;
         if(settings.staff) staff = true;
