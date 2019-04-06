@@ -8,6 +8,8 @@ module.exports = {
     args : true,
 
     execute(message, args){
+        bot = message.client;
+        
         admin = false;
         moderator = false;
         staff = false;
