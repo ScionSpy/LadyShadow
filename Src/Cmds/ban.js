@@ -9,6 +9,10 @@ module.exports = {
 
     execute(message, args){
         bot = message.client;
+
+      //ModLog setting
+        type = "Ban";
+
         admin = false;
         staff = false
 
@@ -27,10 +31,17 @@ module.exports = {
         removeMember = args.shift();
         if(!message.guild.members.get(member.id)) return message.reply(`There's no user on this server with an \`id\` of \`${member.id}\``);
 
-        try{
-            message.guild.members.get(member.id).ban(`Banned by "${message.author.tag} for ${args}`);
-        }catch (err) {
-            console.log(`----------\n\n${err}`);
-        };
+        message.guild.members.get(member.id).kick(`Kicked by "${message.author.tag} for ${args}`)
+            .then(msg => {
+                if(settings.modlog) ch = message.guild.channels.get(settings.modlog);
+
+              //get modLog
+                embed = bot.functions.get("modlog").execute(type, reason, member.user, message.author);
+
+                ch.send(embed);
+            })
+            .catch(err => {
+                console.log(`----------\n\n${err}`);
+            });
     }
 };
