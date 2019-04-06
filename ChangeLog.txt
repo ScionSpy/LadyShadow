@@ -1,0 +1,31 @@
+---==☆ What's New?? ☆==---
+  ---==☆ v.3.0.5.3 ☆==---
+• `Cmd-`Kick
+• `Cmd-`Ban
+
+---==☆ System ☆==---
+• Error && ModLog functions
+• • Nifty in-server Error msgs, lets users have a better idea of "What's Wrong."
+• • ModLog's now create and form. They're then sent to the settings.modlog ch, or the cmd.exe ch.
+
+---==☆ Support ☆==---
+• If you're a member of the Support channel, you've already noticed the #shdw-updates <-- gitHub channel.
+• • That's right!! We're open source now!!
+• • • I will have to take all settings and image files out of Shadows bot folder however :/
+
+
+
+---==☆ Known Bugs ☆ ==---
+• `Cmd-`Kick && Ban -- [Missing Permissions] w\ [Administrator]
+
+
+
+---==☆ What's Next?? ☆==---
+   ---==☆ v.3.0.6 ☆==---
+• `Feature-`Personal Prefixes
+
+
+---==☆ Coming Soon ☆==---
+  ---==☆ v.3.0.7+ ☆==---
+• `Feature-`Censor -- Block those nasty words!!
+• Moving all "Settings" && "Image" files to +1folder lvl. -- Privacy.
