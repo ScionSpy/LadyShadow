@@ -27,6 +27,10 @@ module.exports = {
         removeMember = args.shift();
         if(!message.guild.members.get(member.id)) return message.reply(`There's no user on this server with an \`id\` of \`${member.id}\``);
 
-        message.guild.members.get(member.id).ban(`Banned by "${message.author.tag} for ${args}`);
+        try{
+            message.guild.members.get(member.id).ban(`Banned by "${message.author.tag} for ${args}`);
+        }catch (err) {
+            console.log(`----------\n\n${err}`);
+        };
     }
 };
