@@ -56,3 +56,5 @@
 
 [System]
 • Moving all "Settings" && "Image" files to +1folder lvl. -- Privacy.
+• Feature-Global Rift -- Chat on the Global.Shadow.Rift!!
+• Feature-IRC -- Reconnect the IRC Channel to Shadow_Community/#support
