@@ -8,7 +8,7 @@ module.exports = {
   
   
   execute(message){
-    const b = message.client;
+    const bot = message.client;
     
     /*
       Name
