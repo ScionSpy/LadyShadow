@@ -11,4 +11,5 @@ Coded by Discord Users: §π∆d°≈~§¶¥#0225 ({HSF}ScionSpy) && Bejebajay#4
 
 
 • Suggestions: Have a suggestion? Perhaps a new command or feature??
+
 • • Make a new issue about it, and tag it with the "Suggestions" tag!! (Title the issie as "Suggestion - <yourTitle>")
