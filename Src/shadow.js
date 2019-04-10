@@ -10,7 +10,7 @@ const fs = require('fs');
 const package = require('.././package.json')
 
 const discord = require('discord.js');
-const {gPrefix, oPrefix, owners, } = require('./system/Bot/config.json');
+const {gPrefix, oPrefix, owners } = require('./system/Bot/config.json');
 const token = require('../.././tokens.json').LadyShadow;
 
 
@@ -105,8 +105,17 @@ const inviteFiles = fs.readdirSync('./Src/System/Invites').filter(file => file.e
 //----------
 
 
+bot.on("error", (e) => console.error(e));
+bot.on("warn", (e) => console.warn(e));
+//bot.on("debug", (e) => console.info(e));
+
+
+//----------
+//----------
+
+
 bot.on('ready', () => {
-  bot.startup = `LadyShadow : {\n\ \ bot : {\n\ \ \ \ \ \ "Alpha" : "${alpha}",\n\ \ \ \ \ "Guilds" : "${bot.guilds.size}",\n\ \ \ \ \ \ "Users" : "${bot.users.size}",\n\ \ \ \ \ \ \ \ \ Cmds : "${bot.cmds.size}",\n\ \ \ \ Srpg.Cmds : "${bot.srpg.cmds.size}"\n\ \ },\n\ \ "Start" : "${bot.functions.get('date').execute(bot.readyTimestamp)}"\n}`;
+  bot.startup = `LadyShadow : {\n\ \ bot : {\n\ \ \ \ \ \ "Alpha" : "${alpha}",\n\ \ \ \ \ "Guilds" : "${bot.guilds.size}",\n\ \ \ \ \ \ "Users" : "${bot.users.size}",\n\ \ \ \ \ \ \ "Cmds" : "${bot.cmds.size}",\n\ \ "Srpg.Cmds" : "${bot.srpg.cmds.size}"\n\ \ },\n\ \ "Start" : "${bot.functions.get('date').execute(bot.readyTimestamp)}"\n}`;
 
   //Console Logging.
   console.log(`\n//----------\n\nSystem> Alpha = ${alpha}\n\n`);
@@ -115,11 +124,11 @@ bot.on('ready', () => {
 
   console.log(bot.startup);
 
-  
+
   //Set bot Presence
     //if(alpha) bot.user.setActivity(`as an Alpha.`, {type: "playing"});
   if(alpha) bot.user.setActivity(`"..help" in Developer Mode.`, { type: "Streaming", url: 'https://www.twitch.tv/scion_spy%22%7D'})
-  
+
   if(!alpha) bot.user.setActivity(`in "${prefix}help"`, {type: "playing"});
 
   /**
@@ -142,12 +151,45 @@ bot.on('ready', () => {
 
 
 bot.on('message', (message) => {
+
+  /**
+   * Expirimental verision of "Rift".
+   */
+
+  try{
+    if(message.channel.type == "dm"){
+      if(message.author.bot) return;
+      if(message.author.id != owners[0] && message.author.id != owners[1]) return;
+      msg = `${message.author.tag}: ${message.content}`;
+      message.react('📜');
+
+      owners.forEach(o => {
+        if(o == owners[2]) return;
+        if(message.author.id === o) return;
+
+        if (message.attachments.first()) {
+
+          bot.users.get(o).send(msg, {file: message.attachments.first().url}).then().catch(err => bot.functions.get("err").execute(message.err));
+        } else {
+
+          bot.users.get(o).send(msg).then().catch(err => bot.functions.get("err").execute(message.err));
+        };
+      });
+    };
+  }catch(err){
+    bot.functions.get("err").execute(message, err);
+  };
+
+
+
+
+
   //Identify Owner Presence.
   let isOwner = false;
   if(message.author.id === owners[0]) isOwner = true;
   if(message.author.id === owners[1]) isOwner = true;
 
-  
+
   let settings = "";
   if(message.channel.type === 'text'){
     settings = require(`./System/Settings/Guilds/${message.guild.id}.json`);
@@ -156,7 +198,7 @@ bot.on('message', (message) => {
       g = message.guild;
       u = message.guild.owner.user;
       msg = `No settings file located for:\`\`\`css\n\ \ \ \ ID : ${g.id}\n\ Guild : ${g.name}\n\ Owner : ${u.tag}\n\ \ U.ID : ${u.id}\nJoined : ${g.members.get(bot.user.id).joinedAt}\`\`\``;
-      
+
       owners.forEach(o => {
         bot.users.get(o).send(msg);
       });
@@ -170,7 +212,7 @@ bot.on('message', (message) => {
 
   //Delete Below when add Censors.
   let arggs = message.content.trim().split(/ +/g);
-    
+
 
   if(message.channel.type == "text" && message.guild.id == "147949613784104960") {
     const blocked = ["https", "www."];
@@ -189,11 +231,11 @@ bot.on('message', (message) => {
         .then(message.reply("you posted a link, witch isnt allowed here. If you believe this was made in error, please contact the server owner."));
     };
   };
-  
+
   //End Delete
-  
-  
-  
+
+
+
   if(message.content.startsWith(oPrefix)){
     if(!isOwner) return;
   };
@@ -220,7 +262,7 @@ bot.on('message', (message) => {
 
   //----------
   //----------
-  
+
   if(dm != true){
     if(!message.content.startsWith(prefix) || message.author.bot) return;
   };
@@ -230,58 +272,58 @@ bot.on('message', (message) => {
     return message.author.send(`I cannot post in ${message.channel.name},\nI do not have the \`SEND_MESSAGES\` permssion.`)
       .catch(() => { return; });
   };*/
-    
-    
+
+
   //--------
   //--------
 
 
   const args = message.content.slice(prefix.length).trim().split(/ +/g);
-  const cmdName = args.shift().toLowerCase();  
+  const cmdName = args.shift().toLowerCase();
   const cmd = bot.cmds.get(cmdName) || bot.cmds.find(c => c.aliases && c.aliases.includes(cmdName));
   if (!cmd) return;
-  
-  
+
+
   //----------
   //----------
-  
-  
+
+
   //Args
   if (cmd.args && !args.length){
     let reply = `You didn't provide any arguments, ${message.author}!`;
-    
+
     //Usage
     if (cmd.usage){
       reply += `\nThe proper usage would be: \`${prefix}${cmd.name} ${cmd.usage}\``;
       return message.channel.send(reply);
     };
   };
-  
+
   //guildOnly
-  if (cmd.guildOnly && message.channel.type !== 'text'){ 
+  if (cmd.guildOnly && message.channel.type !== 'text'){
     return message.channel.send("This command can only be used serverSide.");
   };
-  
+
   //Owner?
   if(cmd.owner){
     if(!isOwner) return;
   };
-  
-  
+
+
   //Cooldown
   if (!cooldowns.has(cmd.name)){
-    cooldowns.set(cmd.name, new discord.Collection()); 
+    cooldowns.set(cmd.name, new discord.Collection());
   };
-  
+
 
   //Create Cooldown if cmd has cooldown enabled..
   const now = Date.now();
   const timestamps = cooldowns.get(cmd.name);
   const cooldownAmount = (cmd.cooldown || 3) * 1000;
-    
+
   if (timestamps.has(message.author.id)){
     const expirationTime = timestamps.get(message.author.id) + cooldownAmount;
-    
+
     if (now < expirationTime){
       const timeLeft = (expirationTime - now) / 1000;
       return message.reply(`please wait ${timeLeft.toFixed(1)} more second(s) before reusing \`${cmd.name}\`.`);
@@ -289,13 +331,13 @@ bot.on('message', (message) => {
     timestamps.set(message.author.id, now);
     setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
   };
-  
-  
+
+
   //----------
   //----------
-  
-  
-    try { 
+
+
+    try {
     	cmd.execute(message, args);
     } catch (error) {
       //console.log(error);
@@ -314,19 +356,19 @@ bot.on('message', (message) => {
 
 bot.on("guildCreate", (guild) => {
   fs.writeFileSync(`./Src/System/Settings/Guilds/${guild.id}.json`, `{\n\ \ "id" : "${guild.id}",\n\ \ "prefix" : "${gPrefix}",\n\ \ "dmhelp" : "false",\n\n\ \ "admin" : "",\n\ \ "moderator" : "",\n\ \ "staff" : "",\n\ \ "mute" : "",\n\n\ \ "welcome" : "",\n\ \ "farewell" : "",\n\ \ "modlog" : "",\n\ \ "rift" : "",\n\n\ \ "whitelist" : "[]",\n\ \ "censor" : "[]"\n}`);
-  
+
   e = new discord.RichEmbed()
     .setTitle(guild.name)
     .setThumbnail(guild.iconURL)
     .setColor("GREEN")
     .setFooter("New Guild", bot.user.avatarURL)
     .setDescription(`\`\`\`css\n---==☆ New Guild ☆==---\`\`\` \`\`\`css\n${guild.id}\n\ \ Owner : ${guild.owner.user.username}#${guild.owner.user.discriminator}\nMembers : ${guild.members.size - 1}\nCreated : ${guild.createdAt}\`\`\``)
- 
- 
-  shadowServers.forEach(ch => {  
+
+
+  shadowServers.forEach(ch => {
     bot.channels.get(ch).send(e);
   });
-  
+
 });
 
 
@@ -341,15 +383,15 @@ bot.on("guildDelete", (guild) => {
      bot.channels.get(ch).send(`Failed to delete guild information.\n-> id : ${guild.id}\n\n${err}`)
    });
   });
-  
+
   e = new discord.RichEmbed()
     .setTitle(guild.name)
     .setThumbnail(guild.iconURL)
     .setColor("RED")
     .setFooter("Left Guild", bot.user.avatarURL)
     .setDescription(`\`\`\`css\n---==☆ Left Guild ☆==---\`\`\` \`\`\`css\n${guild.id}\n\ \ Owner : ${guild.owner.user.username}#${guild.owner.user.discriminator}\nMembers : ${guild.members.size - 1}\n\ \ Joined : ${guild.members.get(bot.user.id).joinedAt}\`\`\``)
-  
-  
+
+
   shadowServers.forEach(ch => {
     bot.channels.get(ch).send(e);
   });
