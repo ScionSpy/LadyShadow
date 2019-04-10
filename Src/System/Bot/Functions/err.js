@@ -16,7 +16,11 @@ module.exports = {
           .setDescription(`\`\`\`xl\n${err}\`\`\``)
 
         time = bot.functions.get("date").execute(Date.now());
+        if(message.guild){
         console.log(`\n----------\n\n${time}\n--${message.guild.name} (${message.guild.id}\n--${message.author.tag} (${message.author.id})\n----${message.content}\n------${err}\n`);
+        } else {
+          console.log(`\n----------\n\n${time}\n--${message.author.tag} (${message.author.id})\n----${message.content}\n------${err}\n`);
+        }
 
         return embed;
     }
