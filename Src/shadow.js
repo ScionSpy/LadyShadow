@@ -251,7 +251,7 @@ bot.on('message', (message) => {
   if(message.content.startsWith(gPrefix)) prefix = gPrefix;
   if(message.content.startsWith(oPrefix)) prefix = oPrefix;
   if(!prefix) return;
-  
+
 
   //Identify if Channel == "Dm's".
   dm = false;
@@ -408,13 +408,17 @@ bot.on("guildMemberAdd", (member) => {
   settings = require(`./System/Settings/Guilds/${member.guild.id}.json`);
 
   if(!settings.welcome) return;
-  if(!settings.wMsg) return member.guild.owner.send(`Your Server \`${member.guild.name}\` has a Welcome channel set, but no Weclome Message!!`);
+  //if(!settings.wMsg) {
+    wMsg = `<@${member.user.id}> has joined the server!!\nNew Member Count : \`(${member.guild.members.size})\``;
+  // //else {
+    //wMsg = settings.wMsg;
+  //};
 
-  e.setAuthor(member.user.tag);
+  e.setAuthor(member.user.tag, member.user.avatarURL);
   e.setThumbnail(member.user.avatarURL);
   e.setColor("GREEN");
-  e.setDescription(settings.wMsg);
-  e.setFooter(`${member.user.tag} || ${member.user.id}`);
+  e.setDescription(wMsg);
+  e.setFooter(`${member.user.tag} (${member.user.id}) || ${bot.functions.get('date').execute(Date.now())}`);
 
   member.guild.channels.get(settings.welcome).send(e);
 });
@@ -430,13 +434,17 @@ bot.on("guildMemberRemove", (member) => {
   settings = require(`./System/Settings/Guilds/${member.guild.id}.json`);
 
   if(!settings.farewell) return;
-  if(!settings.fMsg) return member.guild.owner.send(`Your Server \`${member.guild.name}\` has a Farewell channel set, but no Farewell Message!!`);
+  if(!settings.fMsg){
+    fMsg = `${member.user.tag} has left the server..\nNew Member Count : \`(${member.guild.members.size})\``;
+  } else {
+    fMsg = settings.fMsg;
+  };
 
-  e.setAuthor(member.user.tag);
+  e.setAuthor(member.user.tag, member.user.avatarURL);
   e.setThumbnail(member.user.avatarURL);
   e.setColor("RED");
-  e.setDescription(settings.fMsg);
-  e.setFooter(`${member.user.tag} || ${member.user.id}`);
+  e.setDescription(fMsg);
+  e.setFooter(`${member.user.tag} (${member.user.id}) || ${bot.functions.get('date').execute(Date.now())}`);
 
   member.guild.channels.get(settings.farewell).send(e);
 });
