@@ -5,7 +5,7 @@ module.exports = {
     name : "modlog",
     description : "Makes posts to #ModLog",
     usage : "bot.functions.get(`modlog`).execute(type, reason, target, moderator)",
-    
+
     execute(type, reason, target, mod) {
 
       //Get "Colors"
@@ -13,7 +13,7 @@ module.exports = {
             case("kick"):
             case("ban"):
             case("mute"):
-              color = "0000ff";
+              color = "ff0000";
             break;
             case("unban"):
             case("unmute"):
