@@ -1,13 +1,18 @@
 ---==☆ What's New?? ☆==---
-  ---==☆ v.3.0.4.3 ☆==---
+  ---==☆ v.3.0.4.4 ☆==---
 [Server]
 • `Cmd-`Kick
 • `Cmd-`Ban
+
 
 [System]
 • Error && ModLog functions
 • • Nifty in-server Error msgs, lets users have a better idea of "What's Wrong."
 • • ModLog's now create and form. They're then sent to the settings.modlog ch, or the cmd.exe ch.
+• • "Target"'s Icon shows in {emded: 'Author'}
+
+• `Cmd-`Set {Pushed : "Mod" to List (Enables "set mod" as well as "set moderator)}
+
 
 [Support]
 • If you're a member of the Support channel, you've already noticed the #shdw-updates <-- gitHub channel.
@@ -16,7 +21,8 @@
 
 
 ---==☆ Known Bugs ☆ ==---
-• `Cmd-`Kick && Ban -- [Missing Permissions] w\ [Administrator]
+• [√]`Cmd-`Kick && Ban -- [Missing Permissions] w\ [Administrator]
+• • "Missing Perms" Was unknown, however didn't define "Reason" for the Modlog function
 
 
 ---==☆ What's Planned ☆==---
