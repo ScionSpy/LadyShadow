@@ -26,12 +26,13 @@ module.exports = {
 
         if(args.length == 0 || !message.mentions.members) return message.reply(`Please mention a user to ban.\n\`${settings.prefix}ban <@user> <reason>\``);
         if(args.length <= 1) return message.reply(`Please provide a reason for banning ${message.mentions.members.first().user.tag}`);
-        
+
         member = message.mentions.members.first();
         removeMember = args.shift();
+        reason = args.join(' ')
         if(!message.guild.members.get(member.id)) return message.reply(`There's no user on this server with an \`id\` of \`${member.id}\``);
 
-        message.guild.members.get(member.id).kick(`Kicked by "${message.author.tag} for ${args}`)
+        message.guild.members.get(member.id).ban(`Banned by "${message.author.tag}" for ${reason}`)
             .then(msg => {
                 ch = message.channel;
                 if(settings.modlog) ch = message.guild.channels.get(settings.modlog);
