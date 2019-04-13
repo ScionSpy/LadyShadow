@@ -250,7 +250,8 @@ bot.on('message', (message) => {
   if(message.content.startsWith(settings.prefix)) prefix = settings.prefix;
   if(message.content.startsWith(gPrefix)) prefix = gPrefix;
   if(message.content.startsWith(oPrefix)) prefix = oPrefix;
-
+  if(!prefix) return;
+  
 
   //Identify if Channel == "Dm's".
   dm = false;
