@@ -15,6 +15,7 @@
 
 • `Cmd-`Set {Pushed : "Mod" to List (Enables "set mod" as well as "set moderator)}
 • `Cmd-`Raw {Enabled "Path" directory option}
+• `Cmd-`Invite {Rewrite}
 
 
 [Support]
