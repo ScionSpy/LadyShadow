@@ -3,7 +3,8 @@
 [Server]
 • `Cmd-`Kick
 • `Cmd-`Ban
-
+• `Cmd-`HackBan
+• `Cmd-`Unban
 
 [System]
 • Error && ModLog functions
