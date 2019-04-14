@@ -32,8 +32,10 @@ module.exports = {
         reason = args.join(' ')
         if(!message.guild.members.get(member.id)) return message.reply(`There's no user on this server with an \`id\` of \`${member.id}\``);
 
-        message.guild.members.get(member.id).ban(`Banned by "${message.author.tag}" for ${reason}`)
+        message.guild.members.get(member.id).ban(`Banned by "${message.author.tag}" for "${reason}"`)
             .then(msg => {
+              message.react("👌");
+
                 ch = message.channel;
                 if(settings.modlog) ch = message.guild.channels.get(settings.modlog);
 
