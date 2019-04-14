@@ -332,3 +332,11 @@ ASALocalRun/
 
 # Local History for Visual Studio
 .localhistory/
+
+# Ignore any {HSF}LadyShadow#7111 Settings files
+## Shadow
+**/Settings/Guilds*
+**/Settings/Users*
+
+## SRPG
+**/Srpg/Users*
