@@ -1,0 +1,20 @@
+{
+  "id" : "Guild-ID
+  "prefix" : "..",
+  "dmhelp" : "false",
+
+    "Comment-1" : "Roles-ID's",
+  "admin" : "",
+  "moderator" : "",
+  "staff" : "",
+  "mute" : "",
+
+    "Comment-2" : "Channel-ID's",
+  "welcome" : "",
+  "farewell" : "",
+  "modlog" : "",
+  "rift" : "",
+
+  "whitelist" : "[]",
+  "censor" : "[]"
+}
