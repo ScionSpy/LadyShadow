@@ -3,14 +3,16 @@ const fs = require("fs");
 module.exports = {
     name: 'raw',
     aliases: ['code'],
-    description: "Shows a provided commands `raw` code.\nMain Shadow cmds only.",
-    usage: "<cmd>",
+    description: "Shows a provided commands `raw` code.",
+    usage: "Main = <cmd>\nSubCmd = <path> <cmd>\n`/` in [path] are not required.",
     args: true,
     owner: true,
 
     execute(message, args) {
-        const codeFile = fs.readFileSync(`./src/commands/${args[0]}.js`, "utf-8");
-        
+        path = `Src/Cmds/${args}.js`
+        if(args.length >= 1) path = `Src/Cmds/${args.join('/')}.js`;
+        const codeFile = fs.readFileSync(path, "utf-8");
+
         if (!codeFile) return message.channel.send("That command does not exist.");
         const code = String(codeFile);
 
