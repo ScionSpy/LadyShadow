@@ -12,6 +12,7 @@ module.exports = {
         switch(type.toLowerCase()){
             case("kick"):
             case("ban"):
+            case("hack-ban"):
             case("mute"):
               color = "ff0000";
             break;
