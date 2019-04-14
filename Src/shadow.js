@@ -363,7 +363,7 @@ bot.on("guildCreate", (guild) => {
     .setThumbnail(guild.iconURL)
     .setColor("GREEN")
     .setFooter("New Guild", bot.user.avatarURL)
-    .setDescription(`\`\`\`css\n---==☆ New Guild ☆==---\`\`\` \`\`\`css\n${guild.id}\n\ \ Owner : ${guild.owner.user.username}#${guild.owner.user.discriminator}\nMembers : ${guild.members.size - 1}\nCreated : ${guild.createdAt}\`\`\``)
+    .setDescription(`\`\`\`css\n---==☆ New Guild ☆==---\`\`\` \`\`\`css\nGuild ID : ${guild.id}\n\ \ \ Owner : ${guild.owner.user.username}#${guild.owner.user.discriminator}\n\ Members : ${guild.members.size - 1}\n\ Created : ${guild.createdAt}\`\`\``)
 
 
   shadowServers.forEach(ch => {
@@ -390,7 +390,7 @@ bot.on("guildDelete", (guild) => {
     .setThumbnail(guild.iconURL)
     .setColor("RED")
     .setFooter("Left Guild", bot.user.avatarURL)
-    .setDescription(`\`\`\`css\n---==☆ Left Guild ☆==---\`\`\` \`\`\`css\n${guild.id}\n\ \ Owner : ${guild.owner.user.username}#${guild.owner.user.discriminator}\nMembers : ${guild.members.size - 1}\n\ \ Joined : ${guild.members.get(bot.user.id).joinedAt}\`\`\``)
+    .setDescription(`\`\`\`css\n---==☆ Left Guild ☆==---\`\`\` \`\`\`css\nGuild ID${guild.id}\n\ \ \ Owner : ${guild.owner.user.username}#${guild.owner.user.discriminator}\n\ Members : ${guild.members.size - 1}\n\ \ Joined : ${guild.members.get(bot.user.id).joinedAt}\`\`\``)
 
 
   shadowServers.forEach(ch => {
