@@ -1,10 +1,11 @@
 ---==☆ What's New?? ☆==---
-  ---==☆ v.3.0.4.4 ☆==---
+  ---==☆ v.3.0.4.5 ☆==---
 [Server]
 • `Cmd-`Kick
 • `Cmd-`Ban
 • `Cmd-`HackBan
 • `Cmd-`Unban
+
 
 [System]
 • Error && ModLog functions
@@ -13,6 +14,7 @@
 • • "Target"'s Icon shows in {emded: 'Author'}
 
 • `Cmd-`Set {Pushed : "Mod" to List (Enables "set mod" as well as "set moderator)}
+• `Cmd-`Raw {Enabled "Path" directory option}
 
 
 [Support]
