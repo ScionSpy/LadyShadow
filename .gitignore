@@ -335,7 +335,7 @@ ASALocalRun/
 
 # Ignore any {HSF}LadyShadow#7111 Settings files
 ## Shadow
-/Src/**/Guilds/json
+/Src/**/Guilds/.json
 
 ## Shdw + S.RPG
-/Src/**/Users/json
+/Src/**/Users/.json
