@@ -2,7 +2,7 @@ const { owners } = require('.././System/Bot/config.json');
 const fs = require('fs');
 const discord = require('discord.js');
 const e = new discord.RichEmbed();
-let list = ["prefix", "dmhelp", "admin", "moderator", "staff", "mute", "welcome", "farewell", "modlog", "rift"];
+let list = ["prefix", "dmhelp", "admin", "moderator", "staff", "mute", "welcome", "farewell", "rift", "modlog", "chatlog"];
 
 
 module.exports = {
@@ -79,11 +79,14 @@ module.exports = {
         case("farewell"):
           return message.channel.send(`\`\`\`css\n${prefix}set farewell <@farewellChannel || farewellChannelID>\`\`\``);
         break;
+        case("rift"):
+          return message.channel.send(`\`\`\`css\n${prefix}set rift <@riftChannel || riftChannelID>\`\`\``);
+        break;
         case("modlog"):
           return message.channel.send(`\`\`\`css\n${prefix}set modlog <@modlogChannel || modlogChannelID>\`\`\``);
         break;
-        case("rift"):
-          return message.channel.send(`\`\`\`css\n${prefix}set rift <@riftChannel || riftChannelID>\`\`\``);
+        case("chatlog"):
+          return message.channel.send(`\`\`\`css\n${prefix}set chatlog <@chatlogChannel || chatlogChannelID>\`\`\``);
         break;
         default:
           return message.channel.send(`${prefix}set ${list.join(', ')}`);
@@ -92,6 +95,9 @@ module.exports = {
 
     //End-Help
     //Start-SetCmds
+
+    e.setColor(color);
+    e.setAuthor(message.guild.name, message.guild.iconURL);
 
     switch(args.shift().toLowerCase()){
       case("~"):
@@ -107,8 +113,6 @@ module.exports = {
         fs.writeFileSync(`./Src/System/Settings/Guilds/${message.guild.id}.json`, json);
 
         e.setTitle("<:settings:561649800206876684> New Prefix!!");
-        e.setColor(color);
-        e.setAuthor(message.guild.name, message.guild.iconURL);
         e.setDescription(`\`\`\`css\nOld Prefix : ${oPrefix}\nNew Prefix : ${nPrefix}\`\`\`If Shadow refuses to respond have ${bot.users.get(message.guild.owner.id).tag} DM her with the following command.\`\`\`css\n..reset ${message.guild.id} prefix\`\`\``);
 
         return message.channel.send(e);
@@ -128,8 +132,6 @@ module.exports = {
         fs.writeFileSync(`./Src/System/Settings/Guilds/${message.guild.id}.json`, json);
 
         e.setTitle(`<:settings:561649800206876684> DM Help`);
-        e.setColor(color);
-        e.setAuthor(message.guild.name, message.guild.iconURL);
         e.setDescription(`\`\`\`css\nDM Help = ${settings.dmhelp}\`\`\``);
 
         return message.channel.send(e);
@@ -146,8 +148,6 @@ module.exports = {
         fs.writeFileSync(`./Src/System/Settings/Guilds/${message.guild.id}.json`, json);
 
         e.setTitle(`<:settings:561649800206876684> New Staff Role`);
-        e.setColor(color);
-        e.setAuthor(message.guild.name, message.guild.iconURL);
         e.setDescription(`\`\`\`css\nStaff Role = ${message.guild.roles.get(settings.staff).name}\`\`\``);
 
         return message.channel.send(e);
@@ -165,8 +165,6 @@ module.exports = {
       fs.writeFileSync(`./Src/System/Settings/Guilds/${message.guild.id}.json`, json);
 
       e.setTitle(`<:settings:561649800206876684> New Moderator Role`);
-      e.setColor(color);
-      e.setAuthor(message.guild.name, message.guild.iconURL);
       e.setDescription(`\`\`\`css\nModerator Role = ${message.guild.roles.get(settings.moderator).name}\`\`\``);
 
       return message.channel.send(e);
@@ -183,15 +181,13 @@ module.exports = {
     fs.writeFileSync(`./Src/System/Settings/Guilds/${message.guild.id}.json`, json);
 
     e.setTitle(`<:settings:561649800206876684> New Admin Role`);
-    e.setColor(color);
-    e.setAuthor(message.guild.name, message.guild.iconURL);
     e.setDescription(`\`\`\`css\nAdmin Role = ${message.guild.roles.get(settings.admin).name}\`\`\``);
 
     return message.channel.send(e);
 
   break;
       default:
-        return message.channel.send(`The functionality of the \`set\` command has not yet been coded, please wait for future updates.`);
+        return message.channel.send(`The full functionality of the \`set\` command has not yet been coded, please wait for future updates.`);
     };
   },
 };
