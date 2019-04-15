@@ -10,6 +10,4 @@ Coded by Discord Users: §π∆d°≈~§¶¥#0225 ({HSF}ScionSpy) && Bejebajay#4
 • Invite: [Bot Invite](https://discordapp.com/oauth2/authorize?client_id=347872963636494337&scope=bot&permissions=470150359)
 
 
-• Suggestions: Have a suggestion? Perhaps a new command or feature??
-
-• • Make a new issue about it, and tag it with the "Suggestions" tag!! (Title the issie as "Suggestion - <yourTitle>")
+• Did you find a Bug, or simply have a Suggestion? Then Make a post [here.](https://github.com/ScionSpy/LadyShadow/issues/new)
