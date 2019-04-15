@@ -1,10 +1,14 @@
 ---==☆ What's New?? ☆==---
-  ---==☆ v.3.0.4.5 ☆==---
+  ---==☆ v.3.0.4.6 ☆==---
 [Server]
 • `Cmd-`Kick
 • `Cmd-`Ban
 • `Cmd-`HackBan
 • `Cmd-`Unban
+• `Feature-`Modlog (Only Shadow Cmd's)
+• • (Logs : Kick, Ban, Hackban, Unban)
+• • (FutureLogging = Mute, Unmute)
+• `Cmd-`Info  >>-->  `Cmd-`Status
 
 
 [System]
@@ -16,6 +20,10 @@
 • `Cmd-`Set {Pushed : "Mod" to List (Enables "set mod" as well as "set moderator)}
 • `Cmd-`Raw {Enabled "Path" directory option}
 • `Cmd-`Invite {Rewrite}
+• `Cmd-`Status {Rewrite}
+• `Cmd-`Settings {Rewrite : No longer "Raw-Code"}
+
+• `File-`Config.json {Edit : add bot.Support.User array}
 
 
 [Support]
@@ -27,6 +35,8 @@
 ---==☆ Known Bugs ☆ ==---
 • [√]`Cmd-`Kick && Ban -- [Missing Permissions] w\ [Administrator]
 • • "Missing Perms" Was unknown, however didn't define "Reason" for the Modlog function
+
+
 
 
 ---==☆ What's Planned ☆==---
@@ -43,26 +53,36 @@
 • `Feature-`User TZ -- Certain Embeds will show Server or User TZ's
 
 
+
+
 ---==☆ What's Next?? ☆==---
    ---==☆ v.3.0.6 ☆==---
 [Server]
-• Cmd-Mute ^MANAGE_ROLES
-• Cmd-Kick ^KICK_MEMBERS - {v.3.0.5}
-• Cmd-Ban ^BAN_MEMBERS - - {v.3.0.5}
-• Cmd-Set <Enable | Disable> <cmd>
+• `Cmd-`Mute ^MANAGE_ROLES
+• `Cmd-`Kick ^KICK_MEMBERS - {v.3.0.5}
+• `Cmd-`Ban ^BAN_MEMBERS - - {v.3.0.5}
+• `Cmd-`Set <Enable | Disable> <cmd>
 
-[User]
-• Cmd-Shadow <register | un-register>
-• `Feature-`Personal Prefixes
 
-[Owner]
-• % Cmd-Reload
-• % Cmd-Settings <u> <id>
+
 
 ---==☆ Coming Soon ☆==---
   ---==☆ v.3.0.7+ ☆==---
 [Server]
 • `Feature-`Censor -- Block those nasty words!!
+• `Feature-`Chatlog
+• `Feature-`Modlog -- {Enhancement : Read AuditLog}
+
+
+[User]
+• `Cmd-`Shadow <register | un-register>
+• `Feature-`Personal Prefixes
+
+
+[Owner]
+• `%Cmd-`Reload
+• `%Cmd-`Settings <u> <id>
+
 
 [System]
 • Moving all "Settings" && "Image" files to +1folder lvl. -- Privacy.

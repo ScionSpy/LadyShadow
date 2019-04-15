@@ -1,6 +1,10 @@
      ---==☆ S.RPG What To Expect ☆==---
            ---==☆ v.3.0.1 ☆==---
+(S.RPG Updates Do-Not update per LadyShadow update!!)
+
 • Cmd-Srpg Shop -- Shows all In-Game items by their respective category.
+
+
 
 
      ---==☆ S.RPG What's Coming?? ☆==---
