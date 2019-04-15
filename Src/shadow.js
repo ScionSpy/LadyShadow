@@ -10,7 +10,7 @@ const fs = require('fs');
 const package = require('.././package.json')
 
 const discord = require('discord.js');
-const {gPrefix, oPrefix, owners } = require('./system/Bot/config.json');
+const {gPrefix, oPrefix, owners, support } = require('./system/Bot/config.json');
 const token = require('../.././tokens.json').LadyShadow;
 
 
@@ -24,15 +24,24 @@ const shadowServers = ["432290478780579845", "361779296513294336"]
 //----------
 
 
-//Checks if Bot is Alpha.
-let alpha = false;
-if(package.alpha) alpha = true;
-
-
-//----------
-//----------
-
 const bot = new discord.Client();
+
+
+/**
+ * Random "bot.[file]'s"
+ */
+
+//Checks if Bot is Alpha.
+bot.alpha = false;
+if(package.alpha) bot.alpha = true;
+
+bot.owners = owners;
+bot.support = support;
+
+//----------
+//----------
+
+
 //Move below collections to exe module.
 
 bot.cmds = new discord.Collection();
@@ -115,21 +124,21 @@ bot.on("warn", (e) => console.warn(e));
 
 
 bot.on('ready', () => {
-  bot.startup = `LadyShadow : {\n\ \ bot : {\n\ \ \ \ \ \ "Alpha" : "${alpha}",\n\ \ \ \ \ "Guilds" : "${bot.guilds.size}",\n\ \ \ \ \ \ "Users" : "${bot.users.size}",\n\ \ \ \ \ \ \ "Cmds" : "${bot.cmds.size}",\n\ \ "Srpg.Cmds" : "${bot.srpg.cmds.size}"\n\ \ },\n\ \ "Start" : "${bot.functions.get('date').execute(bot.readyTimestamp)}"\n}`;
+  bot.startup = `LadyShadow : {\n\ \ bot : {\n\ \ \ \ \ \ "Alpha" : "${bot.alpha}",\n\ \ \ \ \ "Guilds" : "${bot.guilds.size}",\n\ \ \ \ \ \ "Users" : "${bot.users.size}",\n\ \ \ \ \ \ \ "Cmds" : "${bot.cmds.size}",\n\ \ "Srpg.Cmds" : "${bot.srpg.cmds.size}"\n\ \ },\n\ \ "Start" : "${bot.functions.get('date').execute(bot.readyTimestamp)}"\n}`;
 
   //Console Logging.
-  console.log(`\n//----------\n\nSystem> Alpha = ${alpha}\n\n`);
-  if(alpha) console.log(`System> LadyShadow~Alpha Ready.\n`);
-  if(!alpha) console.log(`System> LadyShadow Ready.\n`);
+  console.log(`\n//----------\n\nSystem> Alpha = ${bot.alpha}\n\n`);
+  if(bot.alpha) console.log(`System> LadyShadow~Alpha Ready.\n`);
+  if(!bot.alpha) console.log(`System> LadyShadow Ready.\n`);
 
   console.log(bot.startup);
 
 
   //Set bot Presence
     //if(alpha) bot.user.setActivity(`as an Alpha.`, {type: "playing"});
-  if(alpha) bot.user.setActivity(`"..help" in Developer Mode.`, { type: "Streaming", url: 'https://www.twitch.tv/scion_spy%22%7D'})
+  if(bot.alpha) bot.user.setActivity(`"..help" in Developer Mode.`, { type: "Streaming", url: 'https://www.twitch.tv/scion_spy%22%7D'})
 
-  if(!alpha) bot.user.setActivity(`in "${prefix}help"`, {type: "playing"});
+  if(!bot.alpha) bot.user.setActivity(`in "${prefix}help"`, {type: "playing"});
 
   /**
    * [0] Playing
@@ -408,11 +417,11 @@ bot.on("guildMemberAdd", (member) => {
   settings = require(`./System/Settings/Guilds/${member.guild.id}.json`);
 
   if(!settings.welcome) return;
-  //if(!settings.wMsg) {
+  if(!settings.wMsg) {
     wMsg = `<@${member.user.id}> has joined the server!!\nNew Member Count : \`(${member.guild.members.size})\``;
-  // //else {
-    //wMsg = settings.wMsg;
-  //};
+  } else {
+    wMsg = settings.wMsg;
+  };
 
   e.setAuthor(member.user.tag, member.user.avatarURL);
   e.setThumbnail(member.user.avatarURL);
