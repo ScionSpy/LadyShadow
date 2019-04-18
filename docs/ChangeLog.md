@@ -46,14 +46,20 @@
 (Not all planned features make it to the Update.)
 (Planned Features are only for "Direction".)
 
+
 [Server]
 • `Cmd-`Staffers -- Update List - If Admin AND Mod roles set, show lists Separately.
 • `Cmd-`Set-Welcome/Farewell Channels and Messages.
+
 
 [System]
 • `Feature-`Mention Prefix -- Use Shadow's Mention as a prefix!!
 • `Feature-`User TZ -- Certain Embeds will show Server or User TZ's
 
+
+[Beta]
+• `System-`ReEnable ShadowBeta -- Prevents bot shutting down and reboots as i update.
+• • More Main Uptime!!
 
 
 
