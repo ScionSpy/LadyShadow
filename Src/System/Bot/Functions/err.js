@@ -22,6 +22,7 @@ module.exports = {
           console.log(`\n----------\n\n${time}\n--${message.author.tag} (${message.author.id})\n----${message.content}\n------${err}\n`);
         }
 
+        console.error(err);
         return embed;
     }
 };
