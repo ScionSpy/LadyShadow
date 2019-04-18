@@ -75,7 +75,7 @@ module.exports = {
     const e = new discord.RichEmbed()
       .setAuthor(`${g.name}'s Settings`, g.iconURL)
       .setColor(color)
-      .setFooter(`${g.name} - Settings || ${bot.functions.get("date").execute(Date.now())}`)
+      .setFooter(`${g.name} - Settings: Edit with: "..set list" || ${bot.functions.get("date").execute(Date.now())}`)
 
       .addField("General", `\`\`\`css\n\ \ \ Prefix : ${settings.prefix}\n\ \ \ DmHelp : ${settings.dmhelp}\n\ \ \ Censor : ${censor}\`\`\``)
 
