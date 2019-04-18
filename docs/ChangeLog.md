@@ -17,13 +17,15 @@
 • • ModLog's now create and form. They're then sent to the settings.modlog ch, or the cmd.exe ch.
 • • "Target"'s Icon shows in {emded: 'Author'}
 
-• `Cmd-`Set {Pushed : "Mod" to List (Enables "set mod" as well as "set moderator)}
+• `Cmd-`Set {Pushed : "Mod" to List (Enables "set mod" as well as "set moderator")}
 • `Cmd-`Raw {Enabled "Path" directory option}
 • `Cmd-`Invite {Rewrite}
 • `Cmd-`Status {Rewrite}
 • `Cmd-`Settings {Rewrite : No longer "Raw-Code"}
 
 • `File-`Config.json {Edit : add bot.Support.User array}
+
+• "Settings" - .gitignore
 
 
 [Support]
@@ -61,7 +63,6 @@
 • `Cmd-`Mute ^MANAGE_ROLES
 • `Cmd-`Kick ^KICK_MEMBERS - {v.3.0.5}
 • `Cmd-`Ban ^BAN_MEMBERS - - {v.3.0.5}
-• `Cmd-`Set <Enable | Disable> <cmd>
 
 
 
@@ -69,9 +70,12 @@
 ---==☆ Coming Soon ☆==---
   ---==☆ v.3.0.7+ ☆==---
 [Server]
+• `Cmd-`Set <Enable | Disable> <cmd>
+
 • `Feature-`Censor -- Block those nasty words!!
 • `Feature-`Chatlog
 • `Feature-`Modlog -- {Enhancement : Read AuditLog}
+
 
 
 [User]
@@ -85,6 +89,5 @@
 
 
 [System]
-• Moving all "Settings" && "Image" files to +1folder lvl. -- Privacy.
-• Feature-Global Rift -- Chat on the Global.Shadow.Rift!!
-• Feature-IRC -- Reconnect the IRC Channel to Shadow_Community/#support
+• `Feature-`Global Rift -- Chat on the Global.Shadow.Rift!!
+• `Feature-`IRC -- Reconnect the IRC Channel to Shadow_Community/#support
