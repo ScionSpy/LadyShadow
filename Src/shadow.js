@@ -123,7 +123,7 @@ bot.on("warn", (e) => console.warn(e));
 //----------
 
 
-bot.on('ready', () => {
+bot.once('ready', () => {
   bot.startup = `LadyShadow : {\n\ \ bot : {\n\ \ \ \ \ \ "Alpha" : "${bot.alpha}",\n\ \ \ \ \ "Guilds" : "${bot.guilds.size}",\n\ \ \ \ \ \ "Users" : "${bot.users.size}",\n\ \ \ \ \ \ \ "Cmds" : "${bot.cmds.size}",\n\ \ "Srpg.Cmds" : "${bot.srpg.cmds.size}"\n\ \ },\n\ \ "Start" : "${bot.functions.get('date').execute(bot.readyTimestamp)}"\n}`;
 
   //Console Logging.
@@ -399,11 +399,12 @@ bot.on("guildDelete", (guild) => {
     .setThumbnail(guild.iconURL)
     .setColor("RED")
     .setFooter("Left Guild", bot.user.avatarURL)
-    .setDescription(`\`\`\`css\n---==☆ Left Guild ☆==---\`\`\` \`\`\`css\nGuild ID${guild.id}\n\ \ \ Owner : ${guild.owner.user.username}#${guild.owner.user.discriminator}\n\ Members : ${guild.members.size - 1}\n\ \ Joined : ${guild.members.get(bot.user.id).joinedAt}\`\`\``)
+    .setDescription(`\`\`\`css\n---==☆ Left Guild ☆==---\`\`\` \`\`\`css\nGuild ID${guild.id}\n\ \ \ Owner : ${guild.owner.user.username}#${guild.owner.user.discriminator}\n\ Members : ${guild.members.size - 1}`/*\n\ \ Joined : ${guild.members.get(bot.user.id).joinedAt}*/`\`\`\``)
 
 
   shadowServers.forEach(ch => {
-    bot.channels.get(ch).send(e);
+    bot.channels.get(ch).send(`I have left __\`${guild.name}\`__ \`(${guild.id})\``)
+      .then(bot.channels.get(ch).send(e));
   });
 });
 
