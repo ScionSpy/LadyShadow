@@ -8,11 +8,11 @@ module.exports = {
   name : "eval",
   description : "....",
   usage : "<code>",
-  
+
   args : true,
   owner : true,
-  
-  
+
+
   execute (message, args){
     //Define eval phrases
 
@@ -24,8 +24,8 @@ module.exports = {
 
     //----------
     //----------
-    
-    
+
+
     try{
       const code = args.join(" ");
       let evaled = eval(code);
