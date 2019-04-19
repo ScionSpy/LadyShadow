@@ -3,7 +3,7 @@
 (S.RPG Updates Do-Not update per LadyShadow update!!)
 
 • Cmd-Srpg Shop -- Shows all In-Game items by their respective category.
-
+• `Cmd-`Srpg-Suggest -- Have an S.RPG suggestion sent straight to the support server!!
 
 
 

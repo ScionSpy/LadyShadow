@@ -97,3 +97,7 @@
 [System]
 • `Feature-`Global Rift -- Chat on the Global.Shadow.Rift!!
 • `Feature-`IRC -- Reconnect the IRC Channel to Shadow_Community/#support
+• `Feature-`"Bot.On('ready'...)" Check guild id's with settings id.json's, if no setting make one, if no server del it.
+• • Remake to include Srpg users
+• `Feature-`Blacklist
+• • Server + Global
