@@ -46,6 +46,7 @@ module.exports = {
    e.addField("Commands", `\`\`\`css\n\ Main : ${bot.cmds.size}\nS.RPG : ${bot.srpg.cmds.size}\`\`\``, true)
    e.addField("Versions", `\`\`\`css\nDiscord.js : ${dV}\n\ \ \ \ Shadow : ${sV}a\n\ ShadowRPG : ${rV}a\`\`\``, true)
    e.addField("Support", `\`\`\`css\n\ Owners : ${bot.owners.length}\nSupport : ${bot.support.length}\`\`\``, true)
+   e.addField("Shadow RPG", `\`\`\`css\n\ \ \ Users : ${bot.srpg.users.size - 2}\n\ \ Houses : 0\nFactions : 0\`\`\``, true)
 
     message.channel.send(e);
   },
