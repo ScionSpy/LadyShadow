@@ -1,17 +1,33 @@
 module.exports = {
   coded : "2019-02-26",
-  
+
   name : "help",
   description : "A list of commands that Shadow holds.",
-  
-  
+
+
   execute (message, args) {
-    
+
+    e = new discord.RichEmbed()
+
+   //Set cmd req stuffs
+   const { cmds } = message.client;
     const data = [];
     const list = [];
-    const { cmds } = message.client;
-    const { prefix } = require(`.././System/Settings/Guilds/${message.guild.id}.json`);
-    
+
+   //Set cmd global.Variables;
+    let { prefix, dmhelp } = require(`.././System/Settings/Guilds/${message.guild.id}.json`);
+    let ch = "";
+
+    if(message.channel.type == "text"){
+      if(!dmhelp){
+        ch = message.author;
+      }else{
+        ch = message.channel;
+      }
+    } else {
+      ch = message.channel;
+    }
+
     if (!args.length){
 
       cmds.map(cmd => {
@@ -19,38 +35,39 @@ module.exports = {
         list.push(cmd.name);
       });
 
-      data.push("Here's a list of all my commands:");
-      data.push(`\`\`\`${list.join(', ')}\`\`\``);
-      data.push(`\nYou can send \`${prefix}help [command name]\` to get info on a specific command!`);
-      
-      return message.channel.send(data, { split: true })
-      
+      e.setTitle("Main Commands")
+      e.setDescription(`\`\`\`css\n• ${list.join((',\n• '))}\`\`\``)
+      e.setFooter(`\`${prefix}help [command name]\``);
+
+      return ch.send(e)
+
       /*.then(() => {
         if (message.channel.type === 'dm') return;
         message.reply('I\'ve sent you a DM with all my commands!'); 	})
-        
+
         .catch(error => { 		console.error(`Could not send help DM to ${message.author.tag}.\n`, error);
-        
+
         message.reply('it seems like I can\'t DM you! Do you have DMs disabled?');
         });*/
     };
-    
-    
+
+
+    //Specific Command Help
+
     const name = args[0].toLowerCase();
     const cmd = cmds.get(name) || cmd.find(c => c.aliases && c.aliases.includes(name));
     if (!cmd){
-      return message.reply('that\'s not a valid command!');
+      return ch.send(`${message.user.id} that\'s not a valid command!`);
     }
-    
-    data.push(`**Name:** ${cmd.name}`);
-    
-    if (cmd.aliases) data.push(`**Aliases:** ${cmd.aliases.join(', ')}`);
-    if (cmd.description) data.push(`**Description:** ${cmd.description}`);
-    if (cmd.usage) data.push(`**Usage:** ${prefix}${cmd.name} ${cmd.usage}`);
-    
-    data.push(`**Cooldown:** ${cmd.cooldown || 3} second(s)`);
-    
-    message.channel.send(data, { split: true });
-    
+
+    e.setTitle(cmd.name);
+
+    if (cmd.aliases) e.addField(`Aliases`, `\`\`\`css\n${cmd.aliases.join(', ')}\`\`\``);
+    if (cmd.cooldown) (`Cooldown`, `\`\`\`css\n${cmd.cooldown || 3} second(s)`);
+    if (cmd.usage) e.addField(`Usage`, `\`\`\`css\n${prefix}${cmd.name} ${cmd.usage}\`\`\``);
+    if (cmd.description) e.addField(`Description`, `\`\`\`css\n${cmd.description}\`\`\``);
+
+    ch.send(e);
+
   },
 };
