@@ -1,10 +1,11 @@
 module.exports = {
   coded : "2019-02-25",
-  
+
   name : "ping",
   description : "pingPong.",
-  
-  
+  cooldown : 20,
+
+
   execute (message, args){
     message.channel.send("Pinging...")
       .then(msg => {
