@@ -256,9 +256,12 @@ bot.on('message', (message) => {
 
   //Identify Prefix used.
   let prefix = "";
+  //const prefixMention = new RegExp(`^<@!?${bot.user.id}> `);
+  //const mPrefix = message.content.match(prefixMention) ? message.content.match(prefixMention)[0] : '!';
   if(message.content.startsWith(settings.prefix)) prefix = settings.prefix;
   if(message.content.startsWith(gPrefix)) prefix = gPrefix;
   if(message.content.startsWith(oPrefix)) prefix = oPrefix;
+  //if(message.content.startsWith(mPrefix)) prefix = mPrefix;
   if(!prefix) return;
 
 
@@ -319,29 +322,37 @@ bot.on('message', (message) => {
     if(!isOwner) return;
   };
 
-
-  //Cooldown
-  if (!cooldowns.has(cmd.name)){
-    cooldowns.set(cmd.name, new discord.Collection());
-  };
-
-
-  //Create Cooldown if cmd has cooldown enabled..
-  const now = Date.now();
-  const timestamps = cooldowns.get(cmd.name);
-  const cooldownAmount = (cmd.cooldown || 3) * 1000;
-
-  if (timestamps.has(message.author.id)){
-    const expirationTime = timestamps.get(message.author.id) + cooldownAmount;
-
-    if (now < expirationTime){
-      const timeLeft = (expirationTime - now) / 1000;
-      return message.reply(`please wait ${timeLeft.toFixed(1)} more second(s) before reusing \`${cmd.name}\`.`);
+  /*
+  //if(!owner){
+    //Cooldown
+    if (!cooldowns.has(cmd.name)){
+      cooldowns.set(cmd.name, new discord.Collection());
     };
-    timestamps.set(message.author.id, now);
-    setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
-  };
 
+
+    //Create Cooldown if cmd has cooldown enabled..
+    const now = Date.now();
+    const timestamps = cooldowns.get(cmd.name);
+    const cooldownAmount = (cmd.cooldown || 3) * 1000;
+    console.log("startCooldown");
+
+
+    if (timestamps.has(cmd.name, message.author.id)){
+      console.log("startedCooldown");
+      const expirationTime = timestamps.get(message.author.id) + cooldownAmount;
+
+      if (now < expirationTime){
+        console.log("cooldownEnabled");
+        const timeLeft = (expirationTime - now) / 1000;
+        return message.reply(`please wait ${timeLeft.toFixed(1)} more second(s) before reusing \`${cmd.name}\`.`);
+      };
+    }else{
+      console.log("cooldownNotEnabled");
+      timestamps.set(message.author.id, now);
+      setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
+    };
+  //}
+  */
 
   //----------
   //----------
