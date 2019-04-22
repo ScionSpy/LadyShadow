@@ -22,6 +22,7 @@
 • `Cmd-`Invite {Rewrite}
 • `Cmd-`Status {Rewrite}
 • `Cmd-`Settings {Rewrite : No longer "Raw-Code"}
+• `Cmd-`Help {Rewrite : Displays in Embed fromat rather than basic-Msg}
 
 • `File-`Config.json {Edit : add bot.Support.User array}
 
@@ -38,6 +39,7 @@
 • [√]`Cmd-`Kick && Ban -- [Missing Permissions] w\ [Administrator]
 • • "Missing Perms" Was unknown, however didn't define "Reason" for the Modlog function
 
+• [X]`Feature-`Cooldown -- Doesn't cooldown... idrky...
 
 
 
