@@ -3,6 +3,9 @@
   "+owner" : ["Spy", "Beje", "Luke"],
   "support" : [],
   "+support" : [],
+
+  "oPrefix" : "??",
   "gPrefix" : "..",
-  "oPrefix" : "??"
+  "dmhelp" : false,
+  "color" : "00ffff"
 }

@@ -15,7 +15,30 @@ const token = require('../.././tokens.json').LadyShadow;
 
 
 //shadowServers is a list of channels for shadow to send Guild Join/Leave msgs.
-const shadowServers = ["432290478780579845", "361779296513294336"]
+const shadowServers = [
+  {
+  "name" : "Shadow Community",
+  "id" : "432290478780579845",
+  "server" : "432290478780579845",
+  "support" : "499074006511517696",
+  "report" : ""
+  },
+  {
+    "name" : "The Devil Family",
+    "id" : "361779296513294336",
+    "server" : "361779296513294336",
+    "support" : "376685678164967425",
+    "report" : ""
+  },
+  {
+  "name" : "The Community",
+  "id" : "566121499745058818",
+  "server" : "570337261120651290",
+  "support" : "570337280477364234",
+  "report" : "570337300278411284"
+  }
+];
+
 //["Shadow Community", "The Devil Family"]
 
 
@@ -42,6 +65,7 @@ if(package.alpha) bot.alpha = true;
 //Move below collections to exe module.
 
 bot.cmds = new discord.Collection();
+bot.config = require('./system/Bot/config.json');
 bot.defaults = require('./System/Settings/default.js');
 bot.functions = new discord.Collection();
 bot.g = new discord.Collection();
@@ -84,9 +108,9 @@ bot.tos.cmds = new discord.Collection();
 */
 bot.support = new discord.Collection();
 bot.support.cmds = new discord.Collection();
+bot.support.shadowServers = shadowServers;
+bot.support.owners = owners;
 bot.support.users = support;
-
-bot.owners = owners;
 
 //End Collections
 
@@ -389,47 +413,11 @@ bot.on('message', (message) => {
   //guildJoin exe-func-newGuild
 
 bot.on("guildCreate", (guild) => {
-  fs.writeFileSync(`./Src/System/Settings/Guilds/${guild.id}.json`, `{\n\ \ "id" : "${guild.id}",\n\ \ "prefix" : "${gPrefix}",\n\ \ "dmhelp" : "false",\n\n\ \ "admin" : "",\n\ \ "moderator" : "",\n\ \ "staff" : "",\n\ \ "mute" : "",\n\n\ \ "welcome" : "",\n\ \ "farewell" : "",\n\ \ "modlog" : "",\n\ \ "rift" : "",\n\n\ \ "whitelist" : "[]",\n\ \ "censor" : "[]"\n}`);
-
-  e = new discord.RichEmbed()
-    .setTitle(guild.name)
-    .setThumbnail(guild.iconURL)
-    .setColor("GREEN")
-    .setFooter("New Guild", bot.user.avatarURL)
-    .setDescription(`\`\`\`css\n---==☆ New Guild ☆==---\`\`\` \`\`\`css\nGuild ID : ${guild.id}\n\ \ \ Owner : ${guild.owner.user.username}#${guild.owner.user.discriminator}\n\ Members : ${guild.members.size - 1}\n\ Created : ${guild.createdAt}\`\`\``)
-
-
-  shadowServers.forEach(ch => {
-    bot.channels.get(ch).send(e);
-  });
-
+    bot.functions.get('newGuild').execute(guild);
 });
 
-
-
-//----------
-//----------
-
-
 bot.on("guildDelete", (guild) => {
-  fs.unlink(`./Src/System/Settings/Guilds/${guild.id}.json`, (err) => {
-   if(err) shadowServers.forEach(ch => {
-     bot.channels.get(ch).send(`Failed to delete guild information.\n-> id : ${guild.id}\n\n${err}`)
-   });
-  });
-
-  e = new discord.RichEmbed()
-    .setTitle(guild.name)
-    .setThumbnail(guild.iconURL)
-    .setColor("RED")
-    .setFooter("Left Guild", bot.user.avatarURL)
-    .setDescription(`\`\`\`css\n---==☆ Left Guild ☆==---\`\`\` \`\`\`css\nGuild ID${guild.id}\n\ \ \ Owner : ${guild.owner.user.username}#${guild.owner.user.discriminator}\n\ Members : ${guild.members.size - 1}`/*\n\ \ Joined : ${guild.members.get(bot.user.id).joinedAt}*/`\`\`\``)
-
-
-  shadowServers.forEach(ch => {
-    bot.channels.get(ch).send(`I have left __\`${guild.name}\`__ \`(${guild.id})\``)
-      .then(bot.channels.get(ch).send(e));
-  });
+    bot.functions.get('leftGuild').execute(guild);
 });
 
 

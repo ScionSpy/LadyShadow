@@ -3,13 +3,14 @@ function newGuild(info) {
     file = {
             "comment-0" : "Base",
         "id" : `${info.id}`,
-            "icon" : `${info.iconURL}`,
+        "joined" : `${info.members.get(info.client.user.id).joinedAt}`,
+        "icon" : `${info.iconURL}`,
 
 
             "comment-1" : "Misc",
-        "prefix" : "..",
-        "dmhelp" : "false",
-        "color" : "00ffff",
+        "prefix" : `${bot.config.gPrefix}`,
+        "dmhelp" : `${bot.config.dmhelp}`,
+        "color" : `${bot.config.color}`,
 
 
             "comment-2" : "Channels",

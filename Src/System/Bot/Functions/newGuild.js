@@ -6,6 +6,29 @@ module.exports = {
 
     execute(guild) {
         bot = guild.client;
-        fs.writeFileSync(`./Src/System.Settings/Guilds/${guild.id}.json`, bot.defaults["guild"])
+        bot.defaults.execute("newGuild", guild);
+
+        let users = 0;
+        let bots = 0;
+
+        guild.members.forEach(member => {
+          if(member.user.bot){
+            bots++
+          } else {
+            users++
+          };
+        });
+
+        e = new discord.RichEmbed()
+            .setTitle(guild.name)
+            .setThumbnail(guild.iconURL)
+            .setColor("GREEN")
+            .setFooter("New Guild", bot.user.avatarURL)
+            .setDescription(`\`\`\`css\n---==☆ New Guild ☆==---\`\`\` \`\`\`css\nGuild ID : ${guild.id}\n\ Members : ${users}\n\ \ \ \ Bots : ${bots}\n\ Created : ${guild.createdAt}\`\`\``)
+
+
+        bot.support.shadowServers.forEach(g => {
+            bot.channels.get(g.server).send(e);
+        });
     }
 }

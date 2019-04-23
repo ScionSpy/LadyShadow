@@ -8,8 +8,9 @@ module.exports = {
 
       //Make UnMade Files
         bot.guilds.forEach(guild => {
-            const file = fs.readFile(`.././Settings/Guilds/${guild.id}.json`, "utf-8", (err) => err);
-            if(!file) bot.defaults.execute("newGuild", guild);
+            //const file = fs.readFile(`./Src/System/Settings/Guilds/${guild.id}.json`, "utf-8", (err) => err);
+            file = bot.g.get(guild.id);
+            if(!file) bot.functions.get('newGuild').execute(guild);
         });
 
         bot.g.forEach(file => {
@@ -20,7 +21,9 @@ module.exports = {
                 guildSettings.push(file);
             });
 
-            if(guildSettings > 0) guildSettings.forEach(setting => fs.unlink(`./Src/System/Settings/Guilds/${file.id}.json`, (err) => err))
+            if(guildSettings > 0) guildSettings.forEach(settings => {
+                bot.functions.get('leftGuild').execute(settings);
+            });
         });
 
     }
