@@ -111,8 +111,6 @@ module.exports = {
 
                                               //Time to do the MATH
                                                 Ore = (MLS -HARD) +1;
-                                                //Ore = MLS + 1 - HARD;
-                                                //message.channel.send(`MLS + 1 - HARD = ${Ore}`)
 
                                                 if(Ore > 0 && Ore > ORR){
                                                     if(MPR){
@@ -129,10 +127,10 @@ module.exports = {
                                                 };
 
                                                 if(Ore > ORR) lost = Ore - ORR;
-                                                if(lost > 0) LOST = `\n\ \ \ \ \ Ore Lost : ${lost}`;
+                                                if(lost > 0) LOST = `\n\ \ \ \ \ \ \ Ore Lost : ${lost}`;
                                                 if(lost <= 0) LOST = "";
 
-                                                e.setDescription(`\`\`\`css\n[Data]\nMLS : ${MLS} | MPR : ${MPR} | ORR : ${ORR} | SIZ : ${SIZ} | HARD : ${HARD}\`\`\`\`\`\`css\n[Result]\nMinimum Mined : ${Ore}\n \ \ \ Recovered : ${ORR}${LOST}\`\`\``);
+                                                e.setDescription(`\`\`\`css\n[Data]\nMLS : ${MLS} | \ MPR : ${MPR} | ORR : ${ORR}\nSIZ : ${SIZ} | HARD : ${HARD}\`\`\`\`\`\`css\n[Result]\n\ \ Minimum Mined : ${Ore}\n \ \ \ \ \ Recovered : ${ORR}${LOST}\nMax Meteor Size : ${SIZ -Ore}\`\`\``);
                                                 message.channel.send(e);
 
 
