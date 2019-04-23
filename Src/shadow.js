@@ -35,9 +35,6 @@ const bot = new discord.Client();
 bot.alpha = false;
 if(package.alpha) bot.alpha = true;
 
-bot.owners = owners;
-bot.support = support;
-
 //----------
 //----------
 
@@ -45,6 +42,7 @@ bot.support = support;
 //Move below collections to exe module.
 
 bot.cmds = new discord.Collection();
+bot.defaults = require('./System/Settings/default.js');
 bot.functions = new discord.Collection();
 bot.g = new discord.Collection();
 bot.tz = new discord.Collection();
@@ -65,6 +63,7 @@ bot.ss.formulas = new discord.Collection();
 */
 bot.srpg = new discord.Collection();
 bot.srpg.cmds = new discord.Collection();
+bot.srpg.config = require('./System/Srpg/System/Settings/config.json');
 bot.srpg.factions = new discord.Collection();
 bot.srpg.functions = new discord.Collection();
 bot.srpg.shop = new discord.Collection();
@@ -85,7 +84,9 @@ bot.tos.cmds = new discord.Collection();
 */
 bot.support = new discord.Collection();
 bot.support.cmds = new discord.Collection();
+bot.support.users = support;
 
+bot.owners = owners;
 
 //End Collections
 
@@ -101,10 +102,6 @@ bot.collections = new discord.Collection();
   for (const file of collections) { 	const collection = require(`./System/Bot/Collections/${file}`);
     bot.collections.set(collection.name, collection);
 };
-
-bot.collections.forEach(collect => {
-  collect.execute(bot, fs)
-});
 
 
 //----------
@@ -147,7 +144,7 @@ bot.on('ready', () => {
     //if(alpha) bot.user.setActivity(`as an Alpha.`, {type: "playing"});
   if(bot.alpha) bot.user.setActivity(`"..help" in Developer Mode.`, { type: "Streaming", url: 'https://www.twitch.tv/scion_spy%22%7D'})
 
-  if(!bot.alpha) bot.user.setActivity(`in "${prefix}help"`, {type: "playing"});
+  if(!bot.alpha) bot.user.setActivity(`in "${gPrefix}help"`, {type: "playing"});
 
   /**
    * [0] Playing
@@ -161,6 +158,13 @@ bot.on('ready', () => {
   */
 
 
+ bot.functions.get("onCheck").execute(bot);
+});
+
+
+bot.collections.get('g').execute(bot, fs);
+bot.collections.forEach(collect => {
+ collect.execute(bot, fs)
 });
 
 

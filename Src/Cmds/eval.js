@@ -22,7 +22,7 @@ module.exports = {
       const fs = require('fs');
       const {oPrefix, owners} = require('.././System/Bot/config.json');
       const e = new discord.RichEmbed();
-      var settings = bot.g.get(message.guild.id)
+      var settings = bot.g.get(message.guild.id);
       var prefix = settings.prefix
 
 

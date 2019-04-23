@@ -9,7 +9,7 @@ module.exports = {
 
   execute(message){
     const bot = message.client;
-
+    e = new discord.RichEmbed();
     /*
       Name
       ID
@@ -36,18 +36,23 @@ module.exports = {
    sV = require('../.././package.json').version;
    rV = require('.././System/Srpg/System/Settings/package.json').version;
 
-
-
-   e = new discord.RichEmbed();
    e.setTitle(`${bot.user.tag}'s`)
    e.setThumbnail(`${bot.user.avatarURL}'s`)
    e.setColor("00ffff")
    e.addField("Info",`\`\`\`css\nGuilds : ${bot.guilds.size}\n\ Users : ${users}\n\ \ Bots : ${bots}\`\`\``, true)
    e.addField("Commands", `\`\`\`css\n\ Main : ${bot.cmds.size}\nS.RPG : ${bot.srpg.cmds.size}\`\`\``, true)
    e.addField("Versions", `\`\`\`css\nDiscord.js : ${dV}\n\ \ \ \ Shadow : ${sV}a\n\ ShadowRPG : ${rV}a\`\`\``, true)
-   e.addField("Support", `\`\`\`css\n\ Owners : ${bot.owners.length}\nSupport : ${bot.support.length}\`\`\``, true)
+   e.addField("Support", `\`\`\`css\n\ Owners : ${bot.owners.length}\nSupport : ${bot.support.users.length}\`\`\``, true)
    e.addField("Shadow RPG", `\`\`\`css\n\ \ \ Users : ${bot.srpg.users.size - 2}\n\ \ Houses : 0\nFactions : 0\`\`\``, true)
 
-    message.channel.send(e);
+
+   message.channel.send(`.`)
+   .then(msg => {
+     msg.edit(`-`)
+     ping = (`(${msg.createdTimestamp - message.createdTimestamp}ms)`);
+     e.setFooter(`Pinging@${ping}\nAPI@(${bot.ping}ms)`)
+     msg.delete();
+     message.channel.send(e);
+   });
   },
 };

@@ -7,9 +7,17 @@ module.exports = {
 
 
   execute (message, args){
+    bot = message.client;
+    settings = bot.g.get(message.guild.id);
+
+    e = new discord.RichEmbed()
+      .setTitle("Pong!!")
+      .setColor(settings.color)
+
     message.channel.send("Pinging...")
       .then(msg => {
-        msg.edit(`Pong!!\`(${msg.createdTimestamp - message.createdTimestamp}ms)\``);
+        e.setDescription(`\`\`\`css\nBot : ${msg.createdTimestamp - message.createdTimestamp}ms\nAPI : ${Math.round(bot.ping)}ms\`\`\``);
+        msg.edit(e);
       });
   },
 };
