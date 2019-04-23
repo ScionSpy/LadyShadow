@@ -10,6 +10,7 @@ module.exports = {
         bot = message.client;
         shop = bot.srpg.shop;
         const {prefix} = bot.g.get(message.guild.id);
+        const {shopListings} = bot.srpg.config;
 
         i = [];
         a = [];
@@ -36,9 +37,9 @@ module.exports = {
 
 
       //If [listing] is greater than "25"
-        if(i.size > 25) i.push(`\n\n== [${i.size - 25} Items Not Listed] ==\n [${prefix}srpg shop items] to view all items`);
-        if(a.size > 25) a.push(`\n\n== [${a.size - 25} Armours Not Listed] ==\n [${prefix}srpg shop armour] to view all armour`);
-        if(w.size > 25) w.push(`\n\n== [${w.size - 25} Weapons Not Listed] ==\n [${prefix}srpg shop weapons] to view all weapons`);
+        if(i.size > shopListings) i.push(`\n\n== [${i.size - shopListings} Items Not Listed] ==\n [${prefix}srpg shop items] to view all items`);
+        if(a.size > shopListings) a.push(`\n\n== [${a.size - shopListings} Armours Not Listed] ==\n [${prefix}srpg shop armour] to view all armour`);
+        if(w.size > shopListings) w.push(`\n\n== [${w.size - shopListings} Weapons Not Listed] ==\n [${prefix}srpg shop weapons] to view all weapons`);
 
 
         e = new discord.RichEmbed();
