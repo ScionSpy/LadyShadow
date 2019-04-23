@@ -1,3 +1,5 @@
+discord = require('discord.js');
+
 module.exports = {
     coded : "2019-04-22",
     name : "hitchance",
@@ -19,13 +21,16 @@ module.exports = {
 
       let hitChance = 0;
       if(sSize > tSize) {
-          hitChance = 50 *tSize /sSize;
+          hitChance = 50 * tSize / sSize;
       } else if(sSize < tSize){
-          hitChance = 100 -(50 *(sSize /tSize));
+          hitChance = 100 - (50 * (sSize / tSize));
       } else hitChance = 50;
 
+      e = new discord.RichEmbed()
+        .setTitle("SagaSpace - Ore")
+        .setColor("00ffff")
+        .setDescription(`\`\`\`css\n[Data]\nShip-Size : ${sSize} | Target-Size : ${tSize}\`\`\`\`\`\`css\n[Formula Result]\nHitChance % : ${Math.floor(hitChance)}\`\`\``);
 
-      message.channel.send(`\`\`\`css\n[Data]\nShip-Size : ${sSize} | Target-Size : ${tSize}\`\`\`\`\`\`css\n[Formula Result]\nHitChance % : ${Math.floor(hitChance)}\`\`\``);
-
+        message.channel.send(e);
     }
   };

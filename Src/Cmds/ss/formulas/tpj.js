@@ -1,3 +1,5 @@
+discord = require('discord.js');
+
 module.exports = {
   coded : "2019-03-16",
 
@@ -20,7 +22,11 @@ module.exports = {
 
     thr = size * 15 / thrOP;
 
-    message.channel.send(`\`\`\`css\n[Data]\nSize : ${size} | THR : ${thrOP}\`\`\`\`\`\`css\n[Formula Result]\nTPJ : ${Math.floor(thr)}\`\`\``);
+    e = new discord.RichEmbed()
+      .setTitle("SagaSpace - Turns Per Jump")
+      .setColor("00ffff")
+      .setDescription(`\`\`\`css\n[Data]\nSize : ${size} | THR : ${thrOP}\`\`\`\`\`\`css\n[Formula Result]\nTPJ : ${Math.floor(thr)}\`\`\``);
 
+    message.channel.send(e);
   }
 };
