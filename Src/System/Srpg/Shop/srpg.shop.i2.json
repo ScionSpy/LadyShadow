@@ -3,5 +3,5 @@
   "name" : "Gold Bar",
   "name2" : "goldBar",
   "value" : 100,
-  "show" : false
+  "hide" : true
 }
