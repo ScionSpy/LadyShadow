@@ -1,5 +1,5 @@
 ---==☆ What's New?? ☆==---
-  ---==☆ v.3.0.4.6 ☆==---
+  ---==☆ v.3.0.4.8 ☆==---
 [Server]
 • `Cmd-`Kick
 • `Cmd-`Ban
@@ -25,6 +25,7 @@
 • `Cmd-`Help {Rewrite : Displays in Embed fromat rather than basic-Msg}
 
 • `File-`Config.json {Edit : add bot.Support.User array}
+• `File-Cmds-`ALL {Enhancement : Began adding "Help Categories" (Future `Cmd-`Help Enhancement)}
 
 • "Settings" - .gitignore
 
@@ -33,6 +34,11 @@
 • If you're a member of the Support channel, you've already noticed the #shdw-updates <-- gitHub channel.
 • • That's right!! We're open source now!!
 • • • I will have to take all settings and image files out of Shadows bot folder however :/
+• • • .GitIgnore!!!
+
+
+[Owner]
+• `Cmd-`Reload
 
 
 ---==☆ Known Bugs ☆ ==---
@@ -40,6 +46,8 @@
 • • "Missing Perms" Was unknown, however didn't define "Reason" for the Modlog function
 
 • [X]`Feature-`Cooldown -- Doesn't cooldown... idrky...
+
+• [√]`Cmd-Srpg-`Shop -- Displays Multiple Embeds (previous embeds don't clear before display Shop)
 
 
 
@@ -55,13 +63,10 @@
 
 
 [System]
+• `Cmd-`Help {Enhancement : CATEGORIES!! "help mod", "help fun", "help all", "help srpg" etc.}
 • `Feature-`Mention Prefix -- Use Shadow's Mention as a prefix!!
 • `Feature-`User TZ -- Certain Embeds will show Server or User TZ's
 
-
-[Beta]
-• `System-`ReEnable ShadowBeta -- Prevents bot shutting down and reboots as i update.
-• • More Main Uptime!!
 
 
 
@@ -92,7 +97,7 @@
 
 
 [Owner]
-• `%Cmd-`Reload
+• `%Cmd-`Reload {v.3.0.5}
 • `%Cmd-`Settings <u> <id>
 
 
@@ -103,3 +108,8 @@
 • • Remake to include Srpg users
 • `Feature-`Blacklist
 • • Server + Global
+
+
+[Beta]
+• `System-`ReEnable ShadowBeta -- Prevents bot shutting down and reboots as i update.
+• • More Main Uptime!!
