@@ -12,6 +12,8 @@ module.exports = {
     description : "Gives a server owner the ability to Overwrite, or Reset, their Server Settings.\nPrimarily used for resetting a non-functioning prefix.",
     usage : "list || <guild.ID> <setting.Name>",
 
+    help : "server",
+
     execute(message, args){
         bot = message.client;
 

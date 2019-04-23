@@ -16,6 +16,8 @@ module.exports = {
   args : true,
   cooldown : 5,
 
+  help : "mod",
+
 
   execute(message, args){
     bot = message.client;

@@ -6,6 +6,8 @@ module.exports = {
     guildOnly : true,
     args : true,
 
+    help : "mod",
+
     execute(message, args){
         bot = message.client;
 

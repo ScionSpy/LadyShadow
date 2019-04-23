@@ -3,7 +3,7 @@ module.exports = {
 
   name : "ping",
   description : "pingPong.",
-  cooldown : 20,
+  cooldown : 5,
 
 
   execute (message, args){

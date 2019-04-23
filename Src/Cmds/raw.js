@@ -8,6 +8,8 @@ module.exports = {
     args: true,
     owner: true,
 
+    help : "owner",
+
     execute(message, args) {
         path = `Src/Cmds/${args}.js`
         if(args.length >= 1) path = `Src/Cmds/${args.join('/')}.js`;
