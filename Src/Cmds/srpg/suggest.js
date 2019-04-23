@@ -13,12 +13,12 @@ module.exports = {
         ch = bot.channels.get('558105957884887045');
 
       //Edit S.RPG Suggestion count
-      //Use "n" when calling the 'Suggetion.Case'
+      //Use "suggestion" when calling the 'Suggetion.Case'
         config = require('../.././System/Srpg/System/Settings/config.json');
-        n = config.suggestion + 1;
+        suggestion = config.suggestion + 1;
 
         const e = new discord.RichEmbed()
-          .setTitle(`Suggestion #${n}`)
+          .setTitle(`Suggestion #${suggestion}`)
           .setAuthor(`${message.author.tag} (${message.author.id})\n${bot.srpg.users.get(message.author.id).name} | House : ${bot.srpg.users.get(message.author.id).misc.house.name}`, message.author.avatarURL)
           .setFooter(`Posted : ${bot.functions.get('date').execute(Date.now())}`)
           .setColor('00ffff')
@@ -26,7 +26,7 @@ module.exports = {
 
         ch.send(e);
 
-        config.suggestion = n;
+        config.suggestion = suggestion;
         json = JSON.stringify(config);
         fs.writeFileSync(`./Src/System/Srpg/System/Settings/config.json`, json);
     }
