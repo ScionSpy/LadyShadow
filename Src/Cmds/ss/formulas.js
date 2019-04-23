@@ -1,7 +1,7 @@
 module.exports = {
   coded : "2019-03-16",
 
-  name : "formula",
+  name : "formulas",
   aliases : ["forms"],
   description : "Provides the formula Results based on correct Data.",
   usage : "<formType> || ss formula list",
@@ -13,9 +13,9 @@ module.exports = {
     bot = message.client;
     discord = require('discord.js');
     prefix = bot.g.get(message.guild.id).prefix;
-    
+
     formType = args.shift().toLowerCase();
-    
+
     if(formType == "list"){
       list = [];
       bot.ss.formulas.map(form => {
@@ -27,19 +27,19 @@ module.exports = {
 
     const formula = bot.ss.formulas.get(formType);
     if(!formula) return message.channel.send(`[ERROR]\nCommand ["${formType}"] not found in the SagaSpace DataBase!\n(Try using "${prefix}ss formula list"!)`, {code:'css'});
-    
-  //Args 
+
+  //Args
     if (formula.args && !args.length){
     let reply = `You didn't provide any arguments, ${message.author}!`;
-  
-    //Usage  
+
+    //Usage
       if (formula.usage){
       reply += `\nThe proper usage would be: \`${prefix}ss formula ${formula.name} ${formula.usage}\``;
       return message.channel.send(reply);
       };
     };
-  
-    try { 
+
+    try {
      	formula.execute(message, args);
     } catch (error) {
       console.error(error);
