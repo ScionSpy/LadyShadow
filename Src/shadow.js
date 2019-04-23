@@ -75,7 +75,16 @@ bot.srpg.users = new discord.Collection();
  *
 */
 bot.tos = new discord.Collection();
-bot.token.cmds = new discord.Collection();
+bot.tos.cmds = new discord.Collection();
+
+/**
+ * Support SetUp
+ * Support COLLECTIONS is not collecting
+ * * (Not SetUp)
+ *
+*/
+bot.support = new discord.Collection();
+bot.support.cmds = new discord.Collection();
 
 
 //End Collections
